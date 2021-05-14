@@ -2,7 +2,9 @@
 
 function ageInDays() {
   let birthYear = prompt("What year were you born?");
-  let ageInDays = (2021 - birthYear) * 365;
+  let currentYear = new Date();
+  let thisYear = currentYear.getFullYear();
+  let ageInDays = (thisYear - birthYear) * 365;
   let h1 = document.createElement("h1");
   let textAnswer = document.createTextNode(`You are ${ageInDays} days old!`);
   h1.setAttribute('id', 'ageInDays');
