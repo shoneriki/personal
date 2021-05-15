@@ -32,3 +32,17 @@ catButton.addEventListener('click', function() {
 //   image.src = "http://thecatapi.com/api/images/get?format=src&type=gif&size=small";
 //   div.appendChild(image);
 // }
+
+// Challenge 3: Rock, Paper, Scissors
+
+
+function rpsGame(yourChoice) {
+  console.log(yourChoice);
+  let humanChoice, botChoice;
+  // humanChoice = yourChoice.id
+  // botChoice = ;
+  // results = decideWinner(humanChoice, botChoice);
+  // message = finalMessage(results) // {'message': "You Won", 'color': 'green' }
+  rpsFrontEnd(yourChoice.id, botChoice, message);
+}
+
