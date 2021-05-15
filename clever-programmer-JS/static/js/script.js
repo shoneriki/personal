@@ -37,12 +37,12 @@ catButton.addEventListener('click', function() {
 
 
 function rpsGame(yourChoice) {
-  console.log(yourChoice);
+  console.log(yourChoice.id);
   var humanChoice, botChoice;
-  // humanChoice = yourChoice.id
+  humanChoice = yourChoice.id
   botChoice = numberToChoice(randToRpsInt());
-  // alert(botChoice);
-  // results = decideWinner(humanChoice, botChoice);
+  console.log('Computer choice:', botChoice);
+  results = decideWinner(humanChoice, botChoice);
   // message = finalMessage(results) // {'message': "You Won", 'color': 'green' }
   // rpsFrontEnd(yourChoice.id, botChoice, message);
 }
@@ -53,4 +53,17 @@ function randToRpsInt() {
 
 function numberToChoice(number) {
   return ['rock', 'paper', 'scissors'][number];
+}
+
+function decideWinner(yourChoice, computerChoice) {
+  let rpsDatabase = {
+    'rock': {'scissors': 1, 'rock': 0.5, 'paper': 0},
+    'paper': {'rock': 1, 'paper': 0.5, 'scissors': 0},
+    'scissors': {'paper': 1, 'scissors': 0.5, 'rock': 0},
+  }
+
+  let yourScore = rpsDatabase[yourChoice][computerChoice];
+  let computerScore = rpsDatabase[computerChoice][yourChoice];
+
+  return [yourScore, computerScore];
 }
