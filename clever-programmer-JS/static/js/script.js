@@ -38,11 +38,19 @@ catButton.addEventListener('click', function() {
 
 function rpsGame(yourChoice) {
   console.log(yourChoice);
-  let humanChoice, botChoice;
+  var humanChoice, botChoice;
   // humanChoice = yourChoice.id
-  // botChoice = ;
+  botChoice = numberToChoice(randToRpsInt());
+  // alert(botChoice);
   // results = decideWinner(humanChoice, botChoice);
   // message = finalMessage(results) // {'message': "You Won", 'color': 'green' }
-  rpsFrontEnd(yourChoice.id, botChoice, message);
+  // rpsFrontEnd(yourChoice.id, botChoice, message);
 }
 
+function randToRpsInt() {
+  return Math.floor(Math.random() * 3);
+}
+
+function numberToChoice(number) {
+  return ['rock', 'paper', 'scissors'][number];
+}
