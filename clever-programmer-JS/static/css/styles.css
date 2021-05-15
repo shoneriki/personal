@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-.container-1, .container-2 {
+.container-1, .container-2, .container-3 {
   border: 1px solid black;
   margin: 0 auto;
   width: 75%;
@@ -23,11 +23,12 @@
   align-items: center;
 }
 
-.flex-box-container-1a {
+.flex-box-container-1a, .flex-box-container-2a {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+  padding: 8px;
 }
 
 #flex-box-result {
@@ -38,13 +39,6 @@
   padding: 16px;
   border: 1px solid black;
   margin: 8px;
-}
-
-.flex-box-container-2a {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
 }
 
 .flex-box-container-2a img {
