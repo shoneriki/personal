@@ -16,3 +16,19 @@ function reset() {
   document.getElementById("flex-box-result").remove();
   window.location.reload();
 }
+
+// Challenge 2
+const catButton = document.querySelector('#generateCat');
+catButton.addEventListener('click', function() {
+  let image = document.createElement('img');
+  let div = document.getElementById('flex-cat-gen');
+  image.src = "http://thecatapi.com/api/images/get?format=src&type=gif&size=small";
+  div.appendChild(image);
+})
+
+// function generateCat() {
+//   let image = document.createElement('img');
+//   let div = document.getElementById('flex-cat-gen');
+//   image.src = "http://thecatapi.com/api/images/get?format=src&type=gif&size=small";
+//   div.appendChild(image);
+// }
