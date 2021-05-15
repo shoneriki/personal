@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-.flex-box-container-1, .flex-box-container-2, .flex-box-rps {
+.flex-box-container-1, .flex-box-container-2, .flex-box-container-3, .flex-box-rps {
   display: flex;
   border: 1px solid black;
   padding: 8px;
@@ -54,3 +54,6 @@
   box-shadow: 0px 10px 50px rgba(37, 50, 233, 1);
 }
 
+.reset-button-div {
+  display: flex;
+}
