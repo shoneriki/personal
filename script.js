@@ -111,3 +111,32 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
   document.getElementById('flex-box-rps-div').appendChild(botDiv);
   document.getElementById('flex-box-rps-div').appendChild(resetDiv);
 }
+
+// Challenge 4 changing button colors
+
+let all_buttons = document.getElementsByTagName('button');
+
+let copyAllButtons = [];
+for (let i=0; i < all_buttons.length; i++) {
+  copyAllButtons.push(all_buttons[i].classList[1]);
+
+}
+
+function buttonColorChange(buttonThingy) {
+  if (buttonThingy.value === 'red') {
+    buttonRed();
+  } else if (buttonThingy.value === 'green') {
+    buttonGreen();
+  } else if (buttonThingy.value === 'reset') {
+    buttonReset();
+  } else if (buttonThingy.value === 'random') {
+    randomColor();
+  }
+}
+
+function buttonRed() {
+  for (let i = 0; i < all_buttons.length; i++) {
+    all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+    all_buttons[i].classList.add('btn-danger')
+  }
+}
