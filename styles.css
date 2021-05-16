@@ -5,14 +5,14 @@ body {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
-.container-1, .container-2, .container-3 {
+.container-1, .container-2, .container-3, .container-4 {
   border: 1px solid black;
   margin: 0 auto;
   text-align: center;
   width: 75%;
 }
 
-.flex-box-container-1, .flex-box-container-2, .flex-box-container-3, .flex-box-rps {
+.flex-box-container-1, .flex-box-container-2, .flex-box-container-3, .flex-box-rps, .flex-box-pick-color {
   border: 1px solid black;
   display: flex;
   flex-wrap: wrap;
