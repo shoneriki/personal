@@ -36,15 +36,15 @@ catButton.addEventListener('click', function() {
 // Challenge 3: Rock, Paper, Scissors
 
 function rpsGame(yourChoice) {
-  console.log(yourChoice);
-  var humanChoice, botChoice;
-  humanChoice = yourChoice.id
+  console.log('You Chose:', yourChoice.id);
+  let humanChoice, botChoice;
+  humanChoice = yourChoice.id;
   botChoice = numberToChoice(randToRpsInt());
   console.log('Computer choice:', botChoice);
   results = decideWinner(humanChoice, botChoice);
-  console.log(results)
-  message = finalMessage(results)
-  console.log(message)
+  console.log('human choice, computer choice:', results)
+  message = finalMessage(results);
+  console.log(message.message);
   rpsFrontEnd(yourChoice.id, botChoice, message);
 }
 
@@ -53,29 +53,29 @@ function randToRpsInt() {
 }
 
 function numberToChoice(number) {
-  return ['rock', 'paper', 'scissors'][number];
+  return ['rock', 'paper', 'scissors'] [number]
 }
 
 function decideWinner(humanChoice, botChoice) {
   let rpsDatabase = {
-    'rock': {'scissors': 1, 'rock': 0.5, 'paper': 0},
-    'paper': {'rock': 1, 'paper': 0.5, 'scissors': 0},
-    'scissors': {'paper': 1, 'scissors': 0.5, 'rock': 0},
+    'rock': {'scissors': 1, 'rock': .5, 'paper': 0},
+    'paper': {'rock': 1, 'paper': .5, 'scissors': 0},
+    'scissors': {'paper': 1, 'scissors': .5, 'rock': 0}
   }
 
   let yourScore = rpsDatabase[humanChoice][botChoice];
   let computerScore = rpsDatabase[botChoice][humanChoice];
 
-  return [yourScore, computerScore];
+  return [yourScore, computerScore]
 }
 
 function finalMessage([yourScore, computerScore]) {
   if (yourScore === 0) {
-    return {'message': 'You Lost!', 'color': 'red'}
+    return {'message': 'You Lost!', 'color': 'red' }
   } else if (yourScore === 0.5) {
-    return {'message': 'You Tied!', 'color': 'gold'}
+    return {'message': 'It\'s a Tie!', 'color': 'gold' }
   } else {
-    return {'message': 'You Won!', 'color': 'green'}
+    return {'message': 'You Win!', 'color': 'green' }
   }
 }
 
@@ -83,10 +83,10 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
   let imagesDatabase = {
     'rock': document.getElementById('rock').src,
     'paper': document.getElementById('paper').src,
-    'scissors': document.getElementById('scissors').src
+    'scissors': document.getElementById('scissors').src,
   }
 
-  // remove all images
+  // remove the images off the screen when one image is clicked
   document.getElementById('rock').remove();
   document.getElementById('paper').remove();
   document.getElementById('scissors').remove();
@@ -96,15 +96,18 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
   let messageDiv = document.createElement('div');
   let resetDiv = document.createElement('div');
 
-  humanDiv.innerHTML = `<img src='${imagesDatabase[humanImageChoice]}' height=150 width=150 style='box-shadow: 0px 10px 50px rgba(37, 50, 233, 1);'>`;
-  messageDiv.innerHTML = `<h1 style ='color: ${finalMessage['color']}; font-size: 60px; padding: 30px;'> ${finalMessage['message']} </h1>`;
-  botDiv.innerHTML = `<img src=' ${imagesDatabase[botImageChoice]} ' height=150 width=150 style='box-shadow: 0px 10px 50px rgba(243, 38, 24, 1);'>`;
-  resetDiv.innerHTML = "<button class='btn btn-warning btn-lg' onclick='reset()' style='margin: auto'> Reset </button>"
-  resetDiv.setAttribute('class', 'reset-button-div')
-  
+  humanDiv.innerHTML =
+    `<img src='${imagesDatabase[humanImageChoice]}' height=150 width=150 style='box-shadow: 0px 10px 50px rgba(37, 50, 233, 1);'>`;
+  messageDiv.innerHTML =
+    `<h1 style='color: ${finalMessage['color']}; font-size: 60px; padding: 30px;'>${finalMessage['message']}</h1>`;
+  botDiv.innerHTML =
+    `<img src='${imagesDatabase[botImageChoice]}' height=150 width=150 style='box-shadow: 0 10px 50px rgba(243, 38, 24, 1);'>`;
+  resetDiv.innerHTML =
+    "<button class = 'btn btn-warning btn-large' onclick='reset()' style='margin: auto'> Reset </button>"
+  resetDiv.setAttribute('class', 'reset-button-div');
+
   document.getElementById('flex-box-rps-div').appendChild(humanDiv);
   document.getElementById('flex-box-rps-div').appendChild(messageDiv);
   document.getElementById('flex-box-rps-div').appendChild(botDiv);
   document.getElementById('flex-box-rps-div').appendChild(resetDiv);
-
 }
