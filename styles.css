@@ -30,7 +30,6 @@ body {
 .flex-box-container-1a, .flex-box-container-2a {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-around;
   padding: 8px;
 }
