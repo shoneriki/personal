@@ -179,10 +179,28 @@ const hitSound = new Audio('clever-programmer-JS/static/blackjack-assets/bj-soun
 
 document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit);
 
+document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal)
+
 function blackjackHit() {
+  showCard(YOU);
+}
+
+function showCard(activePlayer) {
   let cardImage = document.createElement('img');
   cardImage.src = 'clever-programmer-JS/static/blackjack-assets/bj-images/10.png';
   cardImage.height, cardImage.width = 50;
-  document.querySelector(YOU['div']).appendChild(cardImage);
+  document.querySelector(activePlayer['div']).appendChild(cardImage);
   hitSound.play();
+}
+
+function blackjackDeal() {
+  let yourImages = document.querySelector('#your-box').querySelectorAll('img');
+  let dealerImages = document.querySelector('#dealer-box').querySelectorAll('img');
+  for (i=0; i < yourImages.length; i++) {
+    yourImages[i].remove();
+  }
+  for (i=0; i < dealerImages.length; i++) {
+    dealerImages[i].remove();
+  }
+
 }
