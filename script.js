@@ -170,6 +170,7 @@ function randomColors() {
 let blackjackGame = {
   'you': { 'scoreSpan' : '#your-blackjack-result', 'div': '#your-box', 'score': 0},
   'dealer': { 'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box', 'score': 0},
+  'cards': ['2','3','4','5','6','7','8','9','10','J','Q','K','A'],
 }
 
 const YOU = blackjackGame['you'];
@@ -182,12 +183,19 @@ document.querySelector('#blackjack-hit-button').addEventListener('click', blackj
 document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal)
 
 function blackjackHit() {
-  showCard(YOU);
+  let card = randomCard();
+  console.log(card);
+  showCard(card, YOU);
 }
 
-function showCard(activePlayer) {
+function randomCard() {
+  let randomIndex = Math.floor(Math.random() * 13);
+  return blackjackGame['cards'][randomIndex];
+}
+
+function showCard(card, activePlayer) {
   let cardImage = document.createElement('img');
-  cardImage.src = 'clever-programmer-JS/static/blackjack-assets/bj-images/10.png';
+  cardImage.src = `clever-programmer-JS/static/blackjack-assets/bj-images/${card}.png`;
   cardImage.height, cardImage.width = 50;
   document.querySelector(activePlayer['div']).appendChild(cardImage);
   hitSound.play();
@@ -202,5 +210,4 @@ function blackjackDeal() {
   for (i=0; i < dealerImages.length; i++) {
     dealerImages[i].remove();
   }
-
 }
