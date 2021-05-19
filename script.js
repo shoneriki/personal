@@ -207,6 +207,7 @@ function showCard(card, activePlayer) {
 }
 
 function blackjackDeal() {
+  computeWinner();
   let yourImages = document.querySelector('#your-box').querySelectorAll('img');
   let dealerImages = document.querySelector('#dealer-box').querySelectorAll('img');
   for (i=0; i < yourImages.length; i++) {
@@ -271,5 +272,35 @@ function dealerLogic() {
   let card = randomCard();
   showCard(card, DEALER);
   updateScore(card, DEALER);
-  showScore(DEALER)
+  showScore(DEALER);
+}
+
+// winner logic
+function computeWinner() {
+  let winner;
+
+  if (YOU['score'] <= 21) {
+    // condition: higher score than dealer or when dealer busts but you're under 21
+    if (YOU['score'] > DEALER['score'] || (DEALER['score'] > 21) ) {
+      console.log('You won!')
+      winner = YOU;
+    } else if (YOU['score'] < DEALER['score']) {
+      console.log('You lost');
+      winner = DEALER;
+    } else if (YOU['score'] === DEALER['score']) {
+      console.log('Draw');
+    }
+
+  //condition: when user busts but dealer doesn't
+  } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
+    console.log('You lost!');
+    winner = DEALER;
+
+  //condition: when you AND the dealer busts
+  } else if (YOU['score'] > 21 && DEALER['score'] > 21) {
+    console.log('Draw!');
+  }
+
+  console.log('Winner is', winner);
+  return winner;
 }
