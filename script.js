@@ -106,10 +106,10 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
     "<button class = 'btn btn-warning btn-large' onclick='reset()' style='margin: auto'> Reset </button>"
   resetDiv.setAttribute('class', 'reset-button-div');
 
+  document.getElementById('flex-box-rps-div').appendChild(resetDiv);
   document.getElementById('flex-box-rps-div').appendChild(humanDiv);
   document.getElementById('flex-box-rps-div').appendChild(messageDiv);
   document.getElementById('flex-box-rps-div').appendChild(botDiv);
-  document.getElementById('flex-box-rps-div').appendChild(resetDiv);
 }
 
 // Challenge 4 changing button colors
@@ -187,7 +187,8 @@ function blackjackHit() {
   let card = randomCard();
   showCard(card, YOU);
   updateScore(card, YOU);
-  console.log(YOU['score'])
+  showScore(YOU);
+
 }
 
 function randomCard() {
@@ -198,7 +199,7 @@ function randomCard() {
 function showCard(card, activePlayer) {
   let cardImage = document.createElement('img');
   cardImage.src = `clever-programmer-JS/static/blackjack-assets/bj-images/${card}.png`;
-  cardImage.height, cardImage.width = 50;
+  cardImage.height, cardImage.width = 75;
   document.querySelector(activePlayer['div']).appendChild(cardImage);
   hitSound.play();
 }
@@ -215,5 +216,21 @@ function blackjackDeal() {
 }
 
 function updateScore(card, activePlayer) {
-  activePlayer['score'] += blackjackGame['cardsMap'][card];
+  if (card === 'A') {
+
+    // ace logic: if adding 11 keeps  you below 21, add 11, otherwise add 1
+    if (activePlayer['score'] + blackjackGame['cardsMap'][card][1] <= 21) {
+      // ['cardsMap'][0 and 1] are 1 and 11 respectively;
+      activePlayer['score'] += blackjackGame['cardsMap'][card][1];
+    } else {
+      activePlayer['score'] += blackjackGame['cardsMap'][card][0];
+    }
+
+  } else {
+    activePlayer['score'] += blackjackGame['cardsMap'][card];
+  }
+}
+
+function showScore(activePlayer) {
+  document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score']
 }
