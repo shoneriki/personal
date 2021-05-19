@@ -197,11 +197,13 @@ function randomCard() {
 }
 
 function showCard(card, activePlayer) {
-  let cardImage = document.createElement('img');
-  cardImage.src = `clever-programmer-JS/static/blackjack-assets/bj-images/${card}.png`;
-  cardImage.height, cardImage.width = 75;
-  document.querySelector(activePlayer['div']).appendChild(cardImage);
-  hitSound.play();
+  if (activePlayer['score'] <= 21){
+    let cardImage = document.createElement('img');
+    cardImage.src = `clever-programmer-JS/static/blackjack-assets/bj-images/${card}.png`;
+    cardImage.height, cardImage.width = 75;
+    document.querySelector(activePlayer['div']).appendChild(cardImage);
+    hitSound.play();
+  }
 }
 
 function blackjackDeal() {
