@@ -229,7 +229,7 @@ function blackjackDeal() {
   // };
 
   // blackjackResult['mine'].textContent = YOU['score'];
-  // blackjackResult['their'].textContent = YOU['score'];
+  // blackjackResult['their'].textContent = DEALER['score'];
   // blackjackResult['mine'].style.color = 'white';
   // blackjackResult['their'].style.color = 'white';
 
