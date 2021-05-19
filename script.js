@@ -219,10 +219,26 @@ function blackjackDeal() {
   YOU['score'] = 0;
   DEALER['score'] = 0;
 
+  // front-end to reset score
+
+  // BEGINNING comment line for optional refactor
+
+  // let blackjackResult = {
+  //   'mine': document.querySelector('#your-blackjack-result'),
+  //   'their': document.querySelector('#your-blackjack-result')
+  // };
+
+  // blackjackResult['mine'].textContent = YOU['score'];
+  // blackjackResult['their'].textContent = YOU['score'];
+  // blackjackResult['mine'].style.color = 'white';
+  // blackjackResult['their'].style.color = 'white';
+
+  // END comment for optional refactor
+
   document.querySelector('#your-blackjack-result').textContent = 0;
-  document.querySelector('#your-blackjack-result').style.color = 'white';
-  // document.querySelector('#dealer-blackjack-result').textContent = 0;
-  // document.querySelector('#dealer-blackjack-result').style.color = 'white';
+  document.querySelector('#your-blackjack-result').style.color = '#FFFFFF';
+  document.querySelector('#dealer-blackjack-result').textContent = 0;
+  document.querySelector('#dealer-blackjack-result').style.color = '#FFFFFF';
 }
 
 function updateScore(card, activePlayer) {
