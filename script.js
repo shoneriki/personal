@@ -165,7 +165,7 @@ function randomColors() {
   }
 }
 
-// Challenge 5: Blackjack
+// Challenge 5: Blackjack++++++++++++++++++++++++++++++++++++++++++
 
 let blackjackGame = {
   'you': { 'scoreSpan' : '#your-blackjack-result', 'div': '#your-box', 'score': 0},
@@ -175,6 +175,8 @@ let blackjackGame = {
   'wins': 0,
   'losses': 0,
   'draws': 0,
+  'isStand' : false,
+  'turnsOver' : false,
 }
 
 const YOU = blackjackGame['you'];
@@ -189,10 +191,12 @@ document.querySelector('#blackjack-stand-button').addEventListener('click', deal
 document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal)
 
 function blackjackHit() {
-  let card = randomCard();
-  showCard(card, YOU);
-  updateScore(card, YOU);
-  showScore(YOU);
+  if (blackjackGame['isStand'] === false) {
+    let card = randomCard();
+    showCard(card, YOU);
+    updateScore(card, YOU);
+    showScore(YOU);
+  }
 }
 
 function randomCard() {
@@ -275,12 +279,14 @@ function showScore(activePlayer) {
 }
 
 function dealerLogic() {
+  blackjackGame['isStand'] = true;
   let card = randomCard();
   showCard(card, DEALER);
   updateScore(card, DEALER);
   showScore(DEALER);
 
   if (DEALER['score'] > 15) {
+    blackjackGame['turnsOver'] = true;
     let winner = computeWinner();
     showResult(winner);
   }
@@ -305,9 +311,8 @@ function computeWinner() {
 
   //condition: when user busts but dealer doesn't
   } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
-    blackjackGame['losses'];
+    blackjackGame['losses']++;
     winner = DEALER;
-
   //condition: when you AND the dealer busts
   } else if (YOU['score'] > 21 && DEALER['score'] > 21) {
     blackjackGame['draws']++;
