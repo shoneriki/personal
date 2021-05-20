@@ -71,10 +71,13 @@ function decideWinner(humanChoice, botChoice) {
 
 function finalMessage([yourScore, computerScore]) {
   if (yourScore === 0) {
+    lossSound.play();
     return {'message': 'You Lost!', 'color': 'red' }
   } else if (yourScore === 0.5) {
+    drawSound.play();
     return {'message': 'It\'s a Tie!', 'color': 'gold' }
   } else {
+    winSound.play();
     return {'message': 'You Win!', 'color': 'green' }
   }
 }
@@ -97,11 +100,11 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
   let resetDiv = document.createElement('div');
 
   humanDiv.innerHTML =
-    `<img src='${imagesDatabase[humanImageChoice]}' height=150 width=150 style='box-shadow: 0px 10px 50px rgba(37, 50, 233, 1);'>`;
+    `<img src='${imagesDatabase[humanImageChoice]}' height=100 width=100 style='box-shadow: 0px 10px 50px rgba(37, 50, 233, 1);'>`;
   messageDiv.innerHTML =
-    `<h1 style='color: ${finalMessage['color']}; font-size: 60px; padding: 30px;'>${finalMessage['message']}</h1>`;
+    `<h1 style='color: ${finalMessage['color']}; font-size: 40px; padding: 30px;'>${finalMessage['message']}</h1>`;
   botDiv.innerHTML =
-    `<img src='${imagesDatabase[botImageChoice]}' height=150 width=150 style='box-shadow: 0 10px 50px rgba(243, 38, 24, 1);'>`;
+    `<img src='${imagesDatabase[botImageChoice]}' height=100 width=100 style='box-shadow: 0 10px 50px rgba(243, 38, 24, 1);'>`;
   resetDiv.innerHTML =
     "<button class = 'btn btn-warning btn-large' onclick='reset()' style='margin: auto'> Reset </button>"
   resetDiv.setAttribute('class', 'reset-button-div');
