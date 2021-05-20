@@ -344,3 +344,4 @@ function showResult(winner) {
   document.querySelector('#blackjack-result').textContent = message;
   document.querySelector('#blackjack-result').style.color = messageColor;
 }
+
