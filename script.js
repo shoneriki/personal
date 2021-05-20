@@ -10,11 +10,17 @@ function ageInDays() {
   h1.setAttribute('id', 'ageInDays');
   h1.appendChild(textAnswer);
   document.getElementById('flex-box-result').appendChild(h1);
+
+  if (ageInDays < 10950) {
+    winSound.play();
+  } else {
+    lossSound.play();
+  }
+
 }
 
 function reset() {
   document.getElementById("flex-box-result").remove();
-  window.location.reload();
 }
 
 // Challenge 2
@@ -25,6 +31,10 @@ catButton.addEventListener('click', function() {
   image.src = "http://thecatapi.com/api/images/get?format=src&type=gif&size=small";
   div.appendChild(image);
 })
+
+function reset1() {
+  document.getElementById("flex-cat-gen").remove();
+}
 
 // function generateCat() {
 //   let image = document.createElement('img');
@@ -319,23 +329,25 @@ function computeWinner() {
 function showResult(winner) {
   let message, messageColor;
 
-  if (winner === YOU) {
-    document.querySelector('#wins').textContent = blackjackGame['wins'];
-    message = 'You won!';
-    messageColor = 'green';
-    winSound.play()
-  } else if (winner === DEALER) {
-    document.querySelector('#losses').textContent = blackjackGame['losses'];
-    message= 'You lost!';
-    messageColor = 'red';
-    lossSound.play();
-  } else {
-    document.querySelector('#draws').textContent = blackjackGame['draws'];
-    message = 'Draw';
-    messageColor = 'black';
-    drawSound.play();
-  }
+  if (blackjackGame['turnsOver'] === true ) {
+    if (winner === YOU) {
+      document.querySelector('#wins').textContent = blackjackGame['wins'];
+      message = 'You won!';
+      messageColor = 'green';
+      winSound.play()
+    } else if (winner === DEALER) {
+      document.querySelector('#losses').textContent = blackjackGame['losses'];
+      message= 'You lost!';
+      messageColor = 'red';
+      lossSound.play();
+    } else {
+      document.querySelector('#draws').textContent = blackjackGame['draws'];
+      message = 'Draw';
+      messageColor = 'black';
+      drawSound.play();
+    }
 
-  document.querySelector('#blackjack-result').textContent = message;
-  document.querySelector('#blackjack-result').style.color = messageColor;
+    document.querySelector('#blackjack-result').textContent = message;
+    document.querySelector('#blackjack-result').style.color = messageColor;
+  }
 }
