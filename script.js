@@ -244,7 +244,7 @@ function blackjackDeal() {
   document.querySelector('#your-blackjack-result').style.color = '#FFFFFF';
   document.querySelector('#dealer-blackjack-result').textContent = 0;
   document.querySelector('#dealer-blackjack-result').style.color = '#FFFFFF';
-  document.querySelector('#blackjack-result').textContent = "Let's Play"
+  document.querySelector('#blackjack-result').textContent = "Let's Play!"
   document.querySelector('#blackjack-result').style.color = "black"
 }
 
