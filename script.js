@@ -120,6 +120,10 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
   resetDiv.setAttribute('class', 'reset-button-div');
 
   document.getElementById('flex-box-rps-div').appendChild(resetDiv);
+  resetDiv.addEventListener('click', () => {
+    window.location.reload();
+  })
+
   document.getElementById('flex-box-rps-div').appendChild(humanDiv);
   document.getElementById('flex-box-rps-div').appendChild(messageDiv);
   document.getElementById('flex-box-rps-div').appendChild(botDiv);
@@ -198,7 +202,7 @@ const DEALER = blackjackGame['dealer'];
 const hitSound = new Audio('clever-programmer-JS/static/blackjack-assets/bj-sounds/swish.m4a');
 const winSound = new Audio('clever-programmer-JS/static/blackjack-assets/bj-sounds/1up.mp3');
 const lossSound = new Audio ('clever-programmer-JS/static/blackjack-assets/bj-sounds/loss.mp3');
-const drawSound = new Audio('clever-programmer-JS/static/blackjack-assets/bj-sounds/aww.mp3');
+const drawSound = new Audio('clever-programmer-JS/static/blackjack-assets/bj-sounds/jump.mp3');
 
 document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit);
 document.querySelector('#blackjack-stand-button').addEventListener('click', dealerLogic);
