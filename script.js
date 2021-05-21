@@ -224,6 +224,7 @@ function randomCard() {
 
 function showCard(card, activePlayer) {
   if (activePlayer['score'] <= 21){
+    console.log("here");
     let cardImage = document.createElement('img');
     cardImage.src = `clever-programmer-JS/static/blackjack-assets/bj-images/${card}.png`;
     cardImage.height, cardImage.width = 75;
@@ -288,16 +289,17 @@ function showScore(activePlayer) {
 
 function dealerLogic() {
   blackjackGame['isStand'] = true;
-  let card = randomCard();
-  showCard(card, DEALER);
-  updateScore(card, DEALER);
-  showScore(DEALER);
 
-  if (DEALER['score'] > 15) {
+  while (DEALER['score'] < 16 && blackjackGame['isStand'] === true) {
+    let card = randomCard();
+    showCard(card, DEALER);
+    updateScore(card, DEALER);
+    showScore(DEALER);
+  }
+
     blackjackGame['turnsOver'] = true;
     let winner = computeWinner();
     showResult(winner);
-  }
 }
 
 // winner logic
