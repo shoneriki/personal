@@ -66,24 +66,18 @@ body {
 /* Challenge 5 Blackjack*/
 
 .flex-blackjack-row-1, .flex-blackjack-row-2 {
-  background: url('https://image.freepik.com/free-vector/poker-table-background-green-color_47243-1068.jpg') center ;
+  background: url('https://image.freepik.com/free-vector/poker-table-background-green-color_47243-1068.jpg') center;
   color: #ffffff;
 }
 
-.flex-blackjack-row-1 div {
+.flex-blackjack-row-1 div{
   border: 1px solid black;
   height: 350px;
-  padding: 8px;
   flex: 1;
   text-align: center;
 }
 
 .flex-blackjack-row-1 img {
-  padding: 10px;
-}
-
-.flex-blackjack-row-2 button {
-  border: 1px solid black;
   padding: 8px;
 }
 
@@ -92,11 +86,8 @@ body {
   padding: 8px;
 }
 
-table, th, tr, td {
-  padding: 5px;
+table, tr, th, td {
   border: 1px solid black;
-}
-
-td {
+  padding: 4px;
   text-align: center;
 }

@@ -282,7 +282,7 @@ function showScore(activePlayer) {
     document.querySelector(activePlayer['scoreSpan']).textContent = 'BUST!';
     document.querySelector(activePlayer['scoreSpan']).style.color = 'red';
   } else {
-    document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score']
+    document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
   }
 }
 
@@ -331,7 +331,7 @@ function computeWinner() {
   } else if (YOU['score'] > 21 && DEALER['score'] > 21) {
     blackjackGame['draws']++;
   }
-  
+
   return winner;
 }
 
@@ -341,12 +341,12 @@ function showResult(winner) {
   if (blackjackGame['turnsOver'] === true ) {
     if (winner === YOU) {
       document.querySelector('#wins').textContent = blackjackGame['wins'];
-      message = 'You won!';
+      message = 'You Won!';
       messageColor = 'green';
       winSound.play()
     } else if (winner === DEALER) {
       document.querySelector('#losses').textContent = blackjackGame['losses'];
-      message= 'You lost!';
+      message= 'You Lost!';
       messageColor = 'red';
       lossSound.play();
     } else {
